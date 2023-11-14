@@ -31,11 +31,6 @@ export default function Sidebar() {
       icon: <CompassIcon className="w-5 h-5" />,
     },
     {
-      name: "Top Packages",
-      href: "/dashboard/top-packages",
-      icon: <CompassIcon className="w-5 h-5" />,
-    },
-    {
       name: "My Bookings",
       href: "/dashboard/my-bookings",
       icon: <CalendarCheck className="w-5 h-5" />,
@@ -63,7 +58,7 @@ export default function Sidebar() {
               {data.user.name}
             </h4>
             <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400">
-              Transport Management System
+              Tourism Management System
             </p>
           </div>
 
