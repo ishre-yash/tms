@@ -1,0 +1,25 @@
+### Auth Service / Route
+
+### Register
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "name": "shre",
+    "email": "ishreyash@gmail.com",
+    "password": "shreyash"
+}
+
+
+{
+  "message": "User created successfully",
+  "user": {
+    "id": "65531ea9d1f7aa5c83ca7552",
+    "name": "shre",
+    "email": "ishreyash@gmail.com",
+    "password": "$2b$10$0B7c6I6gqII7NTGMxXNSnujs4dIOWEg7doVAiyT2cX.sAcoNj7y46",
+    "createdAt": "2023-11-14T07:15:53.895Z",
+    "updatedAt": "2023-11-14T07:15:53.895Z"
+  }
+}
+    
