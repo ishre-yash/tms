@@ -1,6 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { signOut } from "next-auth/react";
 import React from "react";
 
 export default function Dashboard() {
@@ -266,27 +264,11 @@ export default function Dashboard() {
   ];
   return (
     <>
-      <Button
-        onClick={() => {
-          signOut();
-        }}
-      >
-        Sign Out
-      </Button>
-      <section
-        className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
-        id="package"
-      >
-        <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-          <h2 className="max-w-lg mb-6 text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:mx-auto">
-            Package
-          </h2>
-          <p className="text-base text-gray-700 md:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            aliquid iusto,
-          </p>
-        </div>
-        <div className="grid row-gap-8 sm:row-gap-0 sm:grid-cols-2 lg:grid-cols-3">
+      <section>
+        <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900">
+          Packages
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {packages.map((p, i) => {
             return (
               <div

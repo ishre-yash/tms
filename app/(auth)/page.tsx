@@ -4,7 +4,7 @@ import SigninForm from "./signin-form";
 import { useSession } from "next-auth/react";
 import React from "react";
 import { useRouter } from "next/navigation";
-import LoadingPage from "@/components/ui/loading-page";
+import LoadingPage from "@/components/loading-page";
 import SignupForm from "./signup-form";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
 
   if (status === "unauthenticated") {
     return (
-      <main className="flex flex-col items-center justify-center mt-10">
+      <main className="flex flex-col items-center justify-center pt-10 ">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
           TSM
         </h1>
