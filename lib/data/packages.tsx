@@ -1,277 +1,843 @@
 export const packages = [
   {
+    id: 1,
     image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://upload.wikimedia.org/wikipedia/commons/f/fc/Tungnath_temple.jpg",
     title: "TUNgnath",
-    rating: 5,
-    price: 599,
+    rating: 7,
+    price: 699,
     hotels: [
       {
-        name: "Hotel Name",
+        name: "Chopta Green View Resort",
+        image:
+          "https://cf2.bstatic.com/xdata/images/hotel/max1024x768/494297922.jpg?k=5b3af59c659d50c12197a3d191b8593020ed1414278a660ec543a9f28797d640&o=&hp=1",
         price: 1000,
         available: true,
         rating: 4,
-        address: "Hotel 1 Address",
+        address: "UKhimath ,Chopta, Gopeshwar Road",
         number: "1234567890",
       },
       {
-        name: "Hotel Name 2",
+        name: "Hotel Snoe view Chopta",
+        image:
+          "https://media-cdn.tripadvisor.com/media/photo-s/0e/3c/1e/7c/hotel-snow-view-chopta.jpg",
         price: 1000,
         available: true,
         rating: 4,
-        address: "Hotel 1 Address",
+        address: "Kanda Road Pothibasa UKhimath ",
         number: "1234567890",
       },
     ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Nanital",
-    rating: 6,
-    price: 799,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Champawat",
-    rating: 5,
-    price: 899,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Almora",
-    rating: 7,
-    price: 1000,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Auli",
-    rating: 4,
-    price: 599,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Kaunsani",
-    rating: 6,
-    price: 499,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Pithoragrah",
+    id: 2,
+    image: "https://www.holidify.com/images/bgImages/RISHIKESH.jpg",
+    title: "Rishikesh",
     rating: 8,
     price: 1999,
-    link: "#",
+    hotels: [
+      {
+        name: "Terroakota Rishikesh",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/383785670.jpg?k=49d9a8771cfa830aa13e3eee369d38c32ce6848862cd508a78a87d5e6049ec07&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Laxman Jhula Road ,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel The moksham",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/305575116.jpg?k=13219b3926f6649e4d7a2815a37b5526faf517bed7d0b70e0e2873bef73ecb11&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Osham Ashram,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Chamba",
+    id: 3,
+    image: "https://www.holidify.com/images/bgImages/NAINITAL.jpg",
+    title: "Nanital",
+    rating: 4,
+    price: 899,
+    hotels: [
+      {
+        name: "The Hill heaven",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/374219847.jpg?k=723e59403a964955f0ae4f0735ee4062503007e994ea8dfab9d5222a8d082663&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Ayar Pata malltial Anchoraga",
+        number: "1234567890",
+      },
+      {
+        name: "The Nature green rseort,Nanital,Bhimtal",
+        image:
+          "https://www.holidify.com/images/cmsuploads/compressed/282680696_20220223182448.jpg",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "city center,Nanital",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 4,
+    image: "https://www.holidify.com/images/bgImages/MUSSOORIE.jpg",
+    title: "Mussoorie",
     rating: 6,
-    price: 399,
-    link: "#",
+    price: 999,
+    hotels: [
+      {
+        name: "Rokeby Manor",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/406120244.jpg?k=9a5473ee1c43b1e54b55352c11562926f9a63b4820db9ec75d2999bf2ff4969d&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Landour cantt",
+        number: "1234567890",
+      },
+      {
+        name: "Zostel PLus Mussoorie",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/439344392.jpg?k=b5c981bd9adf68cd8641c9f42fb3194a160a7160ffa6d9e828d646d9cd2f2392&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "charming hill station,mussoorie",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Rishikesh",
+    id: 5,
+    image: "https://www.holidify.com/images/bgImages/AULI.jpg",
+    title: "Auli",
+    rating: 5,
+    price: 899,
+    hotels: [
+      {
+        name: "Aryam Resort ,auli",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "auli ,top mountain",
+        number: "1234567890",
+      },
+      {
+        name: "The Tattva Resort ",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "foothills of Joshimath,",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: "https://www.holidify.com/images/bgImages/CHOPTA.jpg",
+    title: "Chopta",
+    rating: 8,
+    price: 799,
+    hotels: [
+      {
+        name: "Ridhi Homestay Sari",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/364108605.jpg?k=4d5df194eae0765b307c20718dfce988576cd2765b1332b3374331bfd05947fd&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "Shivanandi River Lodge",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/49820567.jpg?k=88b0c3c9a963e5402dbbadddefec9155d52432df2dac079d8107b14253225fba&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Alaknanada River,Chopta",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 6,
+    image: "https://www.holidify.com/images/bgImages/YAMUNOTRI.jpg",
+    title: "Yamunotri",
     rating: 7,
-    price: 599,
-    link: "#",
+    price: 799,
+    hotels: [
+      {
+        name: "Hill dew Homestay",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/275760859.jpg?k=8e8a1c72de3f36633060f5b835b405900c53c78864269fda842147831526d0da&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Gangotri uttarkashi",
+        number: "1234567890",
+      },
+      {
+        name: "Amba Niwas Home Stay,Uttarkashi",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/431563759.jpg?k=d3a48b5341067f89769d4a12833787c8b0e64db46090a425820d4d36fc458475&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Kedarnath ,bypassn marg,Mandow,Uttarkashi",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    id: 7,
+    image: "https://www.holidify.com/images/compressed/2133.jpg?v=1.1",
+    title: "Gangotri",
+    rating: 5,
+    price: 899,
+    hotels: [
+      {
+        name: "Tapovan Cottage,Gangotri",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/478178275.jpg?k=ea5a01b0a764c786dc90c11b715bb94b1354461ee4d889bd0d7c1ce5574d1975&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "National Highway 34",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel Apex Heritage ,Gangotri",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/454040233.jpg?k=5035905cd8d2748160e7ec0095327a4fd6d3f8d05ca2a2a8d33207b541c88739&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "50.9kms from city center",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 8,
+    image: "https://www.holidify.com/images/bgImages/BADRINATH.jpg",
+    title: "Badrinath",
+    rating: 4,
+    price: 999,
+    hotels: [
+      {
+        name: "Amritara The Avadh ",
+        image:
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/362631011.jpg?k=3bb3ef99004f6a1323e104d0e211002115fe6a960c9e9f42327002fdd7d59b73&o=&hp=1",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Badrinath ",
+        number: "1234567890",
+      },
+      {
+        name: "Rama Gust House ",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/478168298.jpg?k=b888101e8a5a028971beaad95d8f7476f30a97d12e952be27b706771b6b07622&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Main Road new bus stand Badrinatg Dham",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 9,
+    image: "https://www.holidify.com/images/bgImages/KEDARNATH.jpg",
+    title: "Kedarnath",
+    rating: 5,
+    price: 1999,
+    hotels: [
+      {
+        name: "KedarDham Guest House",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/353941619.jpg?k=e3ac48fb97be8780a009a1ce6de9e4cad946c64758b6de8a5fad972c017f8fe5&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Lnadmark Gupakshi nearby",
+        number: "1234567890",
+      },
+      {
+        name: "Shri Ram Guest House",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/458747303.jpg?k=da68465449c5c85810281fcfdd3d1a59a4c80eeaa0c42eadd602e34bbda992f1&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Kedarnath Road",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 10,
+    image: "https://www.holidify.com/images/bgImages/HARIDWAR.jpg",
+    title: "Haridware",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "Hotel Ganga ,Haridware",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/407986209.jpg?k=f97a815973a42b8d7f89a27a51ac8ddb027a7f3d549aa2f3c6aaabdd2f9e7a6f&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Mahipal Khandari,Hotel ganga blossam,bhupatwala,haridware ",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel Oliva Inn",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/439033142.jpg?k=4ee79691c1dfef6685b334c49a6b7ea1eaa7cdfabf24d1ae89a0b8ffceac3f8f&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "near Axis Bank,Bhupatwala,Harisware",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 11,
+    image: "https://www.holidify.com/images/bgImages/LANSDOWNE.jpg",
+    title: "Lansdowne",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "Vila By Mountain Homes",
+        image:
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/326398446.jpg?k=9a92d6238289ca9fc19d93ad442320a302269f58d8606d4716a63de9dda33f6d&o=&hp=1",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Tarkeshwar Road Asankhet Village",
+        number: "1234567890",
+      },
+      {
+        name: "Oak Grove Inn (Lansdowne)",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Lnasdowne",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 12,
+    image: "https://www.holidify.com/images/bgImages/MUKTESHWAR.jpg",
+    title: "Mukteshwar",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "goSTOPS Mukteshwar-Rooms&Dorms",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "Zostel Mukteshwar",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 13,
+    image: "https://www.holidify.com/images/bgImages/ALMORA.jpg",
+    title: "Almora",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "The Hosteller Kasar Devi",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address:
+          "Almora-Bageshwar Road,Balt Bari,Upper Binsar Road,Kasar Devi,Almora ",
+        number: "1234567890",
+      },
+      {
+        name: "The Buransh Inn",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Binsar Road (1 kms from kasar Devi Temple)",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 14,
+    image: "https://www.holidify.com/images/bgImages/DHANAULTI.jpg",
+    title: "Dhanulti",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "Glamwood Resort Dhanulti",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 15,
+    image: "https://www.holidify.com/images/bgImages/CHAKRATA.jpg",
+    title: "Chakrata",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "Hotel Burans",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "near vill.Korwa Dehradun Chakarta road",
+        number: "1234567890",
+      },
+      {
+        name: "Green Heaven Resort Chakrata",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Dharnadhar,Kanasar range,Chakrata",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 16,
+    image: "https://www.holidify.com/images/bgImages/RANIKHET.jpg",
+    title: "Ranikhet",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "Terroakota Rishikesh",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/383785670.jpg?k=49d9a8771cfa830aa13e3eee369d38c32ce6848862cd508a78a87d5e6049ec07&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Laxman Jhula Road ,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel The moksham",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/305575116.jpg?k=13219b3926f6649e4d7a2815a37b5526faf517bed7d0b70e0e2873bef73ecb11&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Osham Ashram,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 17,
+    image: "https://www.holidify.com/images/bgImages/UTTARKASHI.jpg",
+    title: "Uttarkashi",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 18,
+    image: "https://www.holidify.com/images/bgImages/JOSHIMATH.jpg",
     title: "Joshimath",
     rating: 8,
-    price: 699,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Haridware",
-    rating: 4,
-    price: 899,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Ranikhet",
-    rating: 5,
-    price: 599,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Chopta",
-    rating: 5,
-    price: 799,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Tehri Garhwal",
-    rating: 5,
     price: 1999,
-    link: "#",
+    hotels: [
+      {
+        name: "Terroakota Rishikesh",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/383785670.jpg?k=49d9a8771cfa830aa13e3eee369d38c32ce6848862cd508a78a87d5e6049ec07&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Laxman Jhula Road ,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel The moksham",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/305575116.jpg?k=13219b3926f6649e4d7a2815a37b5526faf517bed7d0b70e0e2873bef73ecb11&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Osham Ashram,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Dhanulti",
-    rating: 7,
-    price: 499,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Gomukh",
+    id: 19,
+    image: "https://www.holidify.com/images/compressed/1938.jpg?v=1.1",
+    title: "Tehri-Garhwal",
     rating: 8,
-    price: 999,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Mukteshwar",
-    rating: 6,
-    price: 899,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Chakrata",
-    rating: 5,
-    price: 599,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Yamountri",
-    rating: 4,
-    price: 999,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Gangotri",
-    rating: 4,
     price: 1999,
-    link: "#",
+    hotels: [
+      {
+        name: "Terroakota Rishikesh",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/383785670.jpg?k=49d9a8771cfa830aa13e3eee369d38c32ce6848862cd508a78a87d5e6049ec07&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Laxman Jhula Road ,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel The moksham",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/305575116.jpg?k=13219b3926f6649e4d7a2815a37b5526faf517bed7d0b70e0e2873bef73ecb11&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Osham Ashram,Tapovan Rishikesh",
+      },
+    ],
   },
-
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Badrinath",
+    id: 20,
+    image: "https://www.holidify.com/images/bgImages/CHAMPAWAT.jpg",
+    title: "Champawat",
     rating: 8,
-    price: 899,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Kedarnath",
-    rating: 9,
-    price: 899,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Mussorriee",
-    rating: 5,
-    price: 499,
-    link: "#",
-  },
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Lamsdown",
-    rating: 5,
-    price: 599,
-    link: "#",
+    price: 1999,
+    hotels: [
+      {
+        name: "Terroakota Rishikesh",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/383785670.jpg?k=49d9a8771cfa830aa13e3eee369d38c32ce6848862cd508a78a87d5e6049ec07&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Laxman Jhula Road ,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel The moksham",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/305575116.jpg?k=13219b3926f6649e4d7a2815a37b5526faf517bed7d0b70e0e2873bef73ecb11&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Osham Ashram,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Dhanulti",
-    rating: 6,
-    price: 699,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Binsar",
-    rating: 5,
-    price: 799,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Harkidun",
-    rating: 5,
-    price: 499,
-    link: "#",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Dehradun",
+    id: 21,
+    image: "https://www.holidify.com/images/bgImages/PITHORAGARH.jpg",
+    title: "Pithoragarh",
     rating: 8,
-    price: 999,
-    link: "#",
+    price: 1999,
+    hotels: [
+      {
+        name: "Terroakota Rishikesh",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/383785670.jpg?k=49d9a8771cfa830aa13e3eee369d38c32ce6848862cd508a78a87d5e6049ec07&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Laxman Jhula Road ,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+      {
+        name: "Hotel The moksham",
+        image:
+          "https://q-xx.bstatic.com/xdata/images/hotel/max1200/305575116.jpg?k=13219b3926f6649e4d7a2815a37b5526faf517bed7d0b70e0e2873bef73ecb11&o=",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "Osham Ashram,Tapovan Rishikesh",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Harshil",
-    rating: 3,
-    price: 399,
-    link: "#",
+    id: 22,
+    image: "https://www.holidify.com/images/bgImages/CHAMBA-UTTARAKHAND.jpg",
+    Title: "Chamba",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Bhimatl",
-    rating: 5,
-    price: 899,
-    link: "#",
+    id: 23,
+    image: "https://www.holidify.com/images/bgImages/PAURI-GARHWAL.jpg",
+    title: "Pauri-Garhwal",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
   },
   {
+    id: 24,
     image:
-      "https://images.unsplash.com/photo-1667296659532-9670a076adeb?q=80&w=1303&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Kumaoun",
-    rating: 6,
-    price: 799,
-    link: "#",
+      "https://www.holidify.com/images/cmsuploads/compressed/D6W02GUEAIoqcM_20210616180004.jpeg",
+    title: "Guptkashi",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 25,
+    image: "https://www.holidify.com/images/bgImages/RUDRA-PRAYAG.jpg",
+    title: "Rudra-prayag",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 26,
+    image: "https://www.holidify.com/images/bgImages/DEVPRAYAG.jpg",
+    title: "Devprayag",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 27,
+    image: "https://www.holidify.com/images/bgImages/HEMKUND-SAHIB.jpg",
+    title: "Hemkund-Sahib",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 28,
+    image: "https://www.holidify.com/images/bgImages/CHAMOLI.jpg",
+    title: "Chamoli",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
+  },
+  {
+    id: 29,
+    image: "https://www.holidify.com/images/bgImages/HARSIL.jpg",
+    title: "Harsil",
+    rating: 8,
+    price: 1999,
+    hotels: [
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+      {
+        name: "",
+        image: "",
+        price: 1000,
+        available: true,
+        rating: 4,
+        address: "",
+        number: "1234567890",
+      },
+    ],
   },
 ];

@@ -21,8 +21,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useToast } from "@/components/ui/use-toast";
+import axios from "axios";
 
 export default function PackageCard({ packagedata }: { packagedata: any }) {
+  const [open, setOpen] = React.useState(false);
   return (
     <>
       <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
@@ -68,7 +71,7 @@ export default function PackageCard({ packagedata }: { packagedata: any }) {
             <span className="text-3xl font-bold text-gray-900">
               ₹{packagedata.price}
             </span>
-            <Sheet>
+            <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button>Book Now</Button>
               </SheetTrigger>
@@ -81,7 +84,10 @@ export default function PackageCard({ packagedata }: { packagedata: any }) {
                   </SheetDescription>
                 </SheetHeader>
                 <ScrollArea className="h-[65vh] md:h-[70vh] w-full mt-4">
-                  <CardBookingDetails packagedata={packagedata} />
+                  <CardBookingDetails
+                    packagedata={packagedata}
+                    setOpen={setOpen}
+                  />
                 </ScrollArea>
               </SheetContent>
             </Sheet>
@@ -92,10 +98,51 @@ export default function PackageCard({ packagedata }: { packagedata: any }) {
   );
 }
 
-function CardBookingDetails({ packagedata }: { packagedata: any }) {
+function CardBookingDetails({
+  packagedata,
+  setOpen,
+}: {
+  packagedata: any;
+  setOpen: any;
+}) {
+  const { toast } = useToast();
+
   const [person, setPerson] = React.useState(1);
   const [date, setDate] = React.useState("");
   const [days, setDays] = React.useState(1);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const onBooking = async (e: any) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const data = {
+      packageId: packagedata.id,
+      people: person,
+      noOfDays: days,
+      bookingDate: date,
+    };
+
+    await axios
+      .post("/api/packages", data)
+      .then((res) => {
+        if (res.status === 200) {
+          toast({
+            title: "Booking Successful",
+            description: "Your booking is successful.",
+          });
+          setIsLoading(false);
+          setOpen(false);
+        }
+      })
+      .catch((err: any) => {
+        toast({
+          title: err.response.data.message,
+          description: "Please try again.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+      });
+  };
 
   return (
     <>
@@ -190,8 +237,25 @@ function CardBookingDetails({ packagedata }: { packagedata: any }) {
         </TableBody>
       </Table>
 
-      <Button className="mt-4 w-full" size={"lg"}>
-        Book Now
+      <Button className="mt-4 w-full" size={"lg"} onClick={onBooking}>
+        {isLoading ? (
+          <>
+            <svg
+              className="mr-2 h-5 w-5 animate-spin"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8Z"
+              />
+            </svg>
+          </>
+        ) : (
+          "Book Now"
+        )}
       </Button>
       {packagedata.hotels && (
         <>
@@ -207,10 +271,7 @@ function CardBookingDetails({ packagedata }: { packagedata: any }) {
                   key={i}
                 >
                   <div className="relative flex items-end overflow-hidden rounded-xl">
-                    <img
-                      src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="wallpaper"
-                    />
+                    <img src={p.image} alt="wallpaper" />
 
                     <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
                       <svg
