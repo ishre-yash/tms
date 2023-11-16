@@ -576,7 +576,7 @@ export default function HomePage() {
                     Our friendly team is here to help.
                   </p>
                   <p className="mt-2 text-sm text-blue-500">
-                    example@gmail.com
+                    misshrwanp@gmail.com
                   </p>
                 </div>
 
@@ -624,7 +624,7 @@ export default function HomePage() {
                       </label>
                       <input
                         type="text"
-                        placeholder="shre "
+                        placeholder=""
                         className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       />
                     </div>
@@ -635,7 +635,7 @@ export default function HomePage() {
                       </label>
                       <input
                         type="text"
-                        placeholder="yash"
+                        placeholder=""
                         className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       />
                     </div>
@@ -680,7 +680,7 @@ export default function HomePage() {
                 href="/"
                 className="inline-block mb-6 text-2xl font-bold tracking-wider text-gray-800 uppercase"
               >
-                Lorem
+                TMS
               </Link>
               <p className="text-sm text-gray-500 sm:max-w-sm pr-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
@@ -750,7 +750,7 @@ export default function HomePage() {
                         d="M19.95 21q-3.125 0-6.175-1.363t-5.55-3.862q-2.5-2.5-3.862-5.55T3 4.05q0-.45.3-.75t.75-.3H8.1q.35 0 .625.238t.325.562l.65 3.5q.05.4-.025.675T9.4 8.45L6.975 10.9q.5.925 1.187 1.787t1.513 1.663q.775.775 1.625 1.438T13.1 17l2.35-2.35q.225-.225.588-.338t.712-.062l3.45.7q.35.1.575.363T21 15.9v4.05q0 .45-.3.75t-.75.3Z"
                       ></path>
                     </svg>
-                    <span>0000 0000 00</span>
+                    <span>8791966701</span>
                   </li>
                 </ul>
               </div>
@@ -761,7 +761,7 @@ export default function HomePage() {
             <span className="text-sm text-gray-500 sm:text-center">
               © 2023{" "}
               <Link href="/" className="hover:underline">
-                lorem
+                TMS
               </Link>
               . All Rights Reserved.
             </span>

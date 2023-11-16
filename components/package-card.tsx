@@ -208,7 +208,7 @@ function CardBookingDetails({
         Invoice Details
       </div>
 
-      <Table>
+      <Table className="overflow-">
         <TableCaption>
           Invoice for {person} person for {days} days of {packagedata.title}{" "}
           package. Booking Date: {new Date(date).toDateString()} . Amount ₹
@@ -217,9 +217,7 @@ function CardBookingDetails({
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
-            <TableHead>Person</TableHead>
             <TableHead>Date</TableHead>
-            <TableHead>Days</TableHead>
 
             <TableHead className="text-right">Amount</TableHead>
           </TableRow>
@@ -227,9 +225,7 @@ function CardBookingDetails({
         <TableBody>
           <TableRow>
             <TableCell>{packagedata.title}</TableCell>
-            <TableCell>{person}</TableCell>
             <TableCell>{new Date(date).toDateString()}</TableCell>
-            <TableCell>{days}</TableCell>
             <TableCell className="text-right">
               ₹{packagedata.price * person * days}
             </TableCell>
