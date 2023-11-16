@@ -14,14 +14,10 @@ export default async function MyBookings() {
     return <div>no bookings</div>;
   }
 
-  // map out package data to my bookings
-
   myBookings.bookings = myBookings.bookings.map((b: any) => {
     const packageData = packages.find((p) => p.id === b.packageId);
     return { ...b, packageData };
   });
-
-  console.log(myBookings);
 
   return <Bookings data={myBookings.bookings} />;
 }

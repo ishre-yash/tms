@@ -260,7 +260,7 @@ function CardBookingDetails({
       {packagedata.hotels && (
         <>
           <div className="text-lg font-semibold text-gray-900 my-4">
-            Explore Nearby Hotels & Restaurants
+            Explore Nearby Hotels
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
