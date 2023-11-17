@@ -13,7 +13,7 @@ Install tms with pnpm
 ```
 
 ```bash
-    ppm install
+    pnpm install
 ```
 
 `add .env file and add environment variables`
