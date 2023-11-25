@@ -35,7 +35,7 @@ export default function MyBookingsCard({ data }: { data: any }) {
             <div className="flex items-center space-x-2">
               <IndianRupee className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
-                {data.packageData.price * data.people * data.noOfDays}
+                {data.amount}
               </span>
             </div>
             <div className="flex items-center space-x-2">

@@ -5,4 +5,5 @@ export const packageSchema = z.object({
   people: z.number().int(),
   noOfDays: z.number().int(),
   bookingDate: z.string(),
+  amount: z.number().int(),
 });

@@ -16,6 +16,9 @@ const getMyBookings = async () => {
       include: {
         bookings: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     if (!myBookings) {

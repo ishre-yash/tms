@@ -6,13 +6,15 @@ import { packageSchema } from "@/lib/validations/package";
 // POST
 export async function POST(request: Request) {
   try {
-    const { packageId, people, noOfDays, bookingDate } = await request.json();
+    const { packageId, people, noOfDays, bookingDate, amount } =
+      await request.json();
 
     const { success } = packageSchema.safeParse({
       packageId,
       people,
       noOfDays,
       bookingDate,
+      amount,
     });
 
     if (!success) {
@@ -38,6 +40,7 @@ export async function POST(request: Request) {
         people,
         noOfDays,
         bookingDate,
+        amount,
       },
     });
 

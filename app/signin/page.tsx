@@ -21,7 +21,7 @@ export default function Home() {
     return (
       <main className="flex flex-col items-center justify-center pt-10 ">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
-          TSM
+          TMS
         </h1>
         <Tabs defaultValue="signin" className="w-[400px]">
           <TabsList className="grid w-full grid-cols-2">

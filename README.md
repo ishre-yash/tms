@@ -13,7 +13,11 @@ Install tms with pnpm
 ```
 
 ```bash
-    pnpm install
+    npm install
+```
+
+```
+    npx prisma migrate dev --name init
 ```
 
 `add .env file and add environment variables`

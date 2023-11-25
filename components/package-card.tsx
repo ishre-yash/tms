@@ -115,11 +115,23 @@ function CardBookingDetails({
   const onBooking = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
+
+    if (!date) {
+      toast({
+        title: "Please select booking date",
+        description: "Please select booking date.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     const data = {
       packageId: packagedata.id,
       people: person,
       noOfDays: days,
       bookingDate: date,
+      amount: packagedata.price * person * days,
     };
 
     await axios
