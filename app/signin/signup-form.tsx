@@ -27,6 +27,48 @@ export default function SignupForm() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    // Validation
+    if (name.length < 4) {
+      return toast({
+        title: "Name must be at least 4 characters long.",
+        variant: "destructive",
+      });
+    }
+
+    const nameRegex = /^[a-zA-Z ]+$/;
+    if (!nameRegex.test(name)) {
+      return toast({
+        title: "Name must not contain any special characters or numbers.",
+        variant: "destructive",
+      });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      return toast({
+        title: "Invalid email address.",
+        variant: "destructive",
+      });
+    }
+
+    if (password.length < 8) {
+      return toast({
+        title: "Password must be at least 8 characters long.",
+        variant: "destructive",
+      });
+    }
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
+    if (!passwordRegex.test(password)) {
+      return toast({
+        title:
+          "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.",
+        variant: "destructive",
+      });
+    }
+
     setIsLoading(true);
     const data = {
       name: name,
@@ -85,6 +127,7 @@ export default function SignupForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoFocus
+            required
           />
         </div>
         <div className="space-y-1">
@@ -95,6 +138,7 @@ export default function SignupForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoFocus
+            required
           />
         </div>
         <div className="space-y-1">
@@ -104,20 +148,12 @@ export default function SignupForm() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
       </CardContent>
       <CardFooter>
-        <Button
-          onClick={handleSubmit}
-          disabled={
-            !password ||
-            !email ||
-            password.length < 4 ||
-            !email.includes("@") ||
-            !email.includes(".")
-          }
-        >
+        <Button onClick={handleSubmit} disabled={isLoading}>
           {isLoading ? (
             <>
               <svg

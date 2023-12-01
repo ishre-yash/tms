@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Table,
@@ -23,6 +23,20 @@ import {
 } from "@/components/ui/table";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
+import { LockKeyhole, MapPin, Shield, Utensils, Wifi } from "lucide-react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function PackageCard({ packagedata }: { packagedata: any }) {
   const [open, setOpen] = React.useState(false);
@@ -112,6 +126,11 @@ function CardBookingDetails({
   const [days, setDays] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
 
+  const [name, setName] = React.useState("");
+  const [number, setNumber] = React.useState("");
+  const [expiry, setExpiry] = React.useState("");
+  const [cvv, setCvv] = React.useState("");
+
   const onBooking = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
@@ -126,6 +145,65 @@ function CardBookingDetails({
       return;
     }
 
+    // select booking date is not less than current date
+
+    const today = new Date();
+
+    const bookingDate = new Date(date);
+
+    if (bookingDate < today) {
+      toast({
+        title: "Please select valid booking date",
+        description: "Please select valid booking date.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    // validate card details
+
+    const card = {
+      name,
+      number,
+      expiry,
+      cvv,
+    };
+
+    const cardNumberRegex = /^[0-9]{16}$/;
+    const cardExpiryRegex = /^[0-9]{2}\/[0-9]{2}$/;
+    const cardCvvRegex = /^[0-9]{3}$/;
+
+    if (!cardNumberRegex.test(card.number)) {
+      toast({
+        title: "Invalid card number",
+        description: "Please enter valid card number.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    if (!cardExpiryRegex.test(card.expiry)) {
+      toast({
+        title: "Invalid card expiry",
+        description: "Please enter valid card expiry.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    if (!cardCvvRegex.test(card.cvv)) {
+      toast({
+        title: "Invalid card cvv",
+        description: "Please enter valid card cvv.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     const data = {
       packageId: packagedata.id,
       people: person,
@@ -134,16 +212,28 @@ function CardBookingDetails({
       amount: packagedata.price * person * days,
     };
 
+    toast({
+      title: "Processing Payment",
+      description: "Please wait while we process your payment.",
+    });
+
     await axios
       .post("/api/packages", data)
       .then((res) => {
         if (res.status === 200) {
           toast({
-            title: "Booking Successful",
-            description: "Your booking is successful.",
+            title: "Payment Successful",
+            description: "Your payment is successful.",
           });
-          setIsLoading(false);
-          setOpen(false);
+
+          setTimeout(() => {
+            toast({
+              title: "Booking Successful",
+              description: "Your booking is successful.",
+            });
+            setIsLoading(false);
+            setOpen(false);
+          }, 5000);
         }
       })
       .catch((err: any) => {
@@ -155,6 +245,33 @@ function CardBookingDetails({
         setIsLoading(false);
       });
   };
+
+  const feachers = [
+    {
+      title: "Free Food Fiesta",
+      description:
+        "Treat yourself to complimentary gourmet meals with our booking packages. Enjoy a variety of delicious dishes that will make your stay extra special.",
+      icon: <Utensils className="w-6 h-6" />,
+    },
+    {
+      title: "Unlimited Wi-Fi Wonderland",
+      description:
+        "Stay connected hassle-free with our unlimited high-speed Wi-Fi. Whether you're working or sharing your adventures, we've got your internet needs covered.",
+      icon: <Wifi className="w-6 h-6" />,
+    },
+    {
+      title: "Local Adventures Made Easy",
+      description:
+        "Discover the best of the area with our free tourist guide service. Let our experts show you around, providing insider tips and making your stay unforgettable.",
+      icon: <MapPin className="w-6 h-6" />,
+    },
+    {
+      title: "Secure Stay Assurance",
+      description:
+        "Rest easy with our top-notch security features. Your safety is our priority, ensuring a worry-free and secure experience throughout your stay. Enjoy peace of mind as you create lasting memories.",
+      icon: <Shield className="w-6 h-6" />,
+    },
+  ];
 
   return (
     <>
@@ -217,6 +334,33 @@ function CardBookingDetails({
       </div>
 
       <div className="text-lg font-semibold text-gray-900 my-4">
+        Additnal Feachers Included
+      </div>
+
+      <section className="grid gap-4 mb-8 md:grid-cols-2 lg:grid-cols-4">
+        {feachers.map((feacher, i) => {
+          return (
+            <div
+              key={i}
+              className="p-4 bg-white rounded-lg shadow-sm hover:shadow-lg"
+            >
+              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                {feacher.icon}
+              </div>
+              <div className="mt-4">
+                <h3 className="text-lg font-medium text-gray-900">
+                  {feacher.title}
+                </h3>
+                <p className="mt-2 text-base text-gray-500">
+                  {feacher.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      <div className="text-lg font-semibold text-gray-900 my-4">
         Invoice Details
       </div>
 
@@ -245,26 +389,109 @@ function CardBookingDetails({
         </TableBody>
       </Table>
 
-      <Button className="mt-4 w-full" size={"lg"} onClick={onBooking}>
-        {isLoading ? (
-          <>
-            <svg
-              className="mr-2 h-5 w-5 animate-spin"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8Z"
-              />
-            </svg>
-          </>
-        ) : (
-          "Book Now"
-        )}
-      </Button>
+      <Dialog>
+        <DialogTrigger
+          className={buttonVariants({
+            size: "lg",
+            className: "w-full mt-4",
+          })}
+        >
+          Book Now
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Checkout Details</DialogTitle>
+            <DialogDescription>
+              Book your slot for {packagedata.title} package and plane your trip
+              with us. Checkout for {person} person for {days} days of{" "}
+              {packagedata.title} package. Booking Date:{" "}
+              {new Date(date).toDateString()} .
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col items-center space-y-4 ">
+            <img
+              src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
+              alt="payment"
+              className="w-auto h-12"
+            />
+            <section className="flex flex-col w-full gap-4">
+              <div className="grid w-full items-center gap-1.5">
+                <Label htmlFor="name">Name on card</Label>
+                <Input
+                  type="text"
+                  id="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="John Doe"
+                />
+              </div>
+              <div className="grid w-full items-center gap-1.5">
+                <Label htmlFor="number">Card number</Label>
+                <Input
+                  type="text"
+                  id="number"
+                  placeholder="0000 0000 0000 0000"
+                  required
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid w-full items-center gap-1.5">
+                  <Label htmlFor="expiry">Expiry date</Label>
+                  <Input
+                    type="text"
+                    id="expiry"
+                    placeholder="MM/YY"
+                    required
+                    value={expiry}
+                    onChange={(e) => setExpiry(e.target.value)}
+                  />
+                </div>
+                <div className="grid w-full items-center gap-1.5">
+                  <Label htmlFor="cvv">CVV</Label>
+
+                  <Input
+                    type="text"
+                    id="cvv"
+                    placeholder="000"
+                    required
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+          <DialogFooter>
+            <Button onClick={onBooking}>
+              {isLoading ? (
+                <>
+                  <svg
+                    className="mr-2 h-5 w-5 animate-spin"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8Z"
+                    />
+                  </svg>
+                </>
+              ) : (
+                <>
+                  <LockKeyhole className="mr-2 h-5 w-5" />
+                  Pay ₹{packagedata.price * person * days}
+                </>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       {packagedata.hotels && (
         <>
           <div className="text-lg font-semibold text-gray-900 my-4">
