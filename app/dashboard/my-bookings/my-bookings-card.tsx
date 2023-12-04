@@ -30,9 +30,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/components/ui/use-toast";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { cn } from "@/lib/utils";
+import axios from "axios";
 
 export default function MyBookingsCard({ data }: { data: any }) {
   const [open, setOpen] = React.useState(false);
@@ -122,6 +136,25 @@ function CardBookingDetails({ data, setOpen }: { data: any; setOpen: any }) {
     },
   ];
 
+  const handleBookingCancel = async () => {
+    axios
+      .delete(`/api/packages?bookingId=${data.id}`)
+      .then((res) => {
+        toast({
+          title: "Booking Cancelled",
+          description: "Your booking has been cancelled successfully.",
+        });
+        setOpen(false);
+      })
+      .catch((err) => {
+        toast({
+          title: "Booking Cancelled",
+          description: "Your booking has been cancelled successfully.",
+        });
+        setOpen(false);
+      });
+  };
+
   return (
     <>
       <div className="text-lg font-semibold text-gray-900 my-4">
@@ -175,6 +208,28 @@ function CardBookingDetails({ data, setOpen }: { data: any; setOpen: any }) {
           </TableRow>
         </TableBody>
       </Table>
+
+      {new Date(data.bookingDate).getTime() > Date.now() && (
+        <AlertDialog>
+          <AlertDialogTrigger className={cn(buttonVariants(), "mt-4 w-full")}>
+            Cancel Booking
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Your booking will be cancelled. This action cannot be undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleBookingCancel}>
+                Continue
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
 
       {data.packageData.hotels && (
         <>
