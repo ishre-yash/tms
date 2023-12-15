@@ -1,17 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { DateRange } from "react-day-picker";
+import { addDays } from "date-fns";
+import { LockKeyhole, MapPin, Shield, Utensils, Wifi } from "lucide-react";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button, buttonVariants } from "./ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { CalendarDateRangePicker } from "@/components/date-range-picker";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button, buttonVariants } from "./ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Table,
   TableBody,
@@ -21,12 +28,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useToast } from "@/components/ui/use-toast";
-import axios from "axios";
-import { LockKeyhole, MapPin, Shield, Utensils, Wifi } from "lucide-react";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -34,9 +37,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function PackageCard({ packagedata }: { packagedata: any }) {
   const [open, setOpen] = React.useState(false);
@@ -122,7 +123,10 @@ function CardBookingDetails({
   const { toast } = useToast();
 
   const [person, setPerson] = React.useState(1);
-  const [date, setDate] = React.useState("");
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(),
+    to: addDays(new Date(), 3),
+  });
   const [days, setDays] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -130,35 +134,36 @@ function CardBookingDetails({
   const [number, setNumber] = React.useState("");
   const [expiry, setExpiry] = React.useState("");
   const [cvv, setCvv] = React.useState("");
+  const [upiId, setUpiId] = useState("");
 
   const onBooking = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!date) {
-      toast({
-        title: "Please select booking date",
-        description: "Please select booking date.",
-        variant: "destructive",
-      });
-      setIsLoading(false);
-      return;
-    }
+    if (date) {
+      if (!date?.from) {
+        toast({
+          title: "Please select booking date",
+          description: "Please select booking date.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
 
-    // select booking date is not less than current date
+      const today = new Date();
 
-    const today = new Date();
+      const bookingDate = new Date(date.from);
 
-    const bookingDate = new Date(date);
-
-    if (bookingDate < today) {
-      toast({
-        title: "Please select valid booking date",
-        description: "Please select valid booking date.",
-        variant: "destructive",
-      });
-      setIsLoading(false);
-      return;
+      if (bookingDate < today) {
+        toast({
+          title: "Please select valid booking date",
+          description: "Please select valid booking date.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
     }
 
     // validate card details
@@ -169,46 +174,72 @@ function CardBookingDetails({
       expiry,
       cvv,
     };
+    if (name.length > 4) {
+      const cardNumberRegex = /^[0-9]{16}$/;
+      const cardExpiryRegex = /^[0-9]{2}\/[0-9]{2}$/;
+      const cardCvvRegex = /^[0-9]{3}$/;
 
-    const cardNumberRegex = /^[0-9]{16}$/;
-    const cardExpiryRegex = /^[0-9]{2}\/[0-9]{2}$/;
-    const cardCvvRegex = /^[0-9]{3}$/;
+      if (!cardNumberRegex.test(card.number)) {
+        toast({
+          title: "Invalid card number",
+          description: "Please enter valid card number.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
 
-    if (!cardNumberRegex.test(card.number)) {
-      toast({
-        title: "Invalid card number",
-        description: "Please enter valid card number.",
-        variant: "destructive",
-      });
-      setIsLoading(false);
-      return;
+      if (!cardExpiryRegex.test(card.expiry)) {
+        toast({
+          title: "Invalid card expiry",
+          description: "Please enter valid card expiry.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      if (!cardCvvRegex.test(card.cvv)) {
+        toast({
+          title: "Invalid card cvv",
+          description: "Please enter valid card cvv.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+    } else {
+      if (upiId.length < 4) {
+        toast({
+          title: "Invalid Payment Method",
+          description: "Please select valid payment method.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
     }
 
-    if (!cardExpiryRegex.test(card.expiry)) {
-      toast({
-        title: "Invalid card expiry",
-        description: "Please enter valid card expiry.",
-        variant: "destructive",
-      });
-      setIsLoading(false);
-      return;
+    // calculate no of days
+
+    let noOfDays = 0;
+
+    if (date?.from && date?.to) {
+      noOfDays = (date?.to.getTime() - date?.from.getTime()) / 86400000;
     }
 
-    if (!cardCvvRegex.test(card.cvv)) {
-      toast({
-        title: "Invalid card cvv",
-        description: "Please enter valid card cvv.",
-        variant: "destructive",
-      });
-      setIsLoading(false);
-      return;
-    }
+    const date1 = new Date(date?.from || "");
+    const date2 = new Date(date?.to || "");
+
+    const diffTime = Math.abs(date2.getTime() - date1.getTime());
+
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
     const data = {
       packageId: packagedata.id,
       people: person,
-      noOfDays: days,
-      bookingDate: date,
+      noOfDays: diffDays,
+      bookingDate: date ? date.from : "",
       amount: packagedata.price * person * days,
     };
 
@@ -273,6 +304,16 @@ function CardBookingDetails({
     },
   ];
 
+  useEffect(() => {
+    const date1 = new Date(date?.from || "");
+    const date2 = new Date(date?.to || "");
+
+    const diffTime = Math.abs(date2.getTime() - date1.getTime());
+
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    setDays(diffDays);
+  }, [date]);
+
   return (
     <>
       <div className="flex items-center justify-between mt-4">
@@ -301,11 +342,7 @@ function CardBookingDetails({
         Select Booking Date
       </div>
 
-      <input
-        type="date"
-        className="border border-gray-200 rounded-lg shadow-sm p-2 w-full"
-        onChange={(e) => setDate(e.target.value)}
-      />
+      <CalendarDateRangePicker date={date} setDate={setDate} />
 
       <div className="text-lg font-semibold text-gray-900 my-4">
         Select Booking Days
@@ -367,8 +404,8 @@ function CardBookingDetails({
       <Table className="overflow-">
         <TableCaption>
           Invoice for {person} person for {days} days of {packagedata.title}{" "}
-          package. Booking Date: {new Date(date).toDateString()} . Amount ₹
-          {packagedata.price * person * days}
+          package. Booking Date: {new Date(date?.from || "").toDateString()} .
+          Amount ₹{packagedata.price * person * days}
         </TableCaption>
         <TableHeader>
           <TableRow>
@@ -381,7 +418,7 @@ function CardBookingDetails({
         <TableBody>
           <TableRow>
             <TableCell>{packagedata.title}</TableCell>
-            <TableCell>{new Date(date).toDateString()}</TableCell>
+            <TableCell>{new Date(date?.from || "0").toDateString()}</TableCell>
             <TableCell className="text-right">
               ₹{packagedata.price * person * days}
             </TableCell>
@@ -405,65 +442,78 @@ function CardBookingDetails({
               Book your slot for {packagedata.title} package and plane your trip
               with us. Checkout for {person} person for {days} days of{" "}
               {packagedata.title} package. Booking Date:{" "}
-              {new Date(date).toDateString()} .
+              {new Date(date?.from || "0").toDateString()} .
             </DialogDescription>
           </DialogHeader>
-          <div className="flex flex-col items-center space-y-4 ">
-            <img
-              src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
-              alt="payment"
-              className="w-auto h-12"
-            />
-            <section className="flex flex-col w-full gap-4">
-              <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="name">Name on card</Label>
-                <Input
-                  type="text"
-                  id="name"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="John Doe"
-                />
-              </div>
-              <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="number">Card number</Label>
-                <Input
-                  type="text"
-                  id="number"
-                  placeholder="0000 0000 0000 0000"
-                  required
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="grid w-full items-center gap-1.5">
-                  <Label htmlFor="expiry">Expiry date</Label>
-                  <Input
-                    type="text"
-                    id="expiry"
-                    placeholder="MM/YY"
-                    required
-                    value={expiry}
-                    onChange={(e) => setExpiry(e.target.value)}
-                  />
-                </div>
-                <div className="grid w-full items-center gap-1.5">
-                  <Label htmlFor="cvv">CVV</Label>
 
-                  <Input
-                    type="text"
-                    id="cvv"
-                    placeholder="000"
-                    required
-                    value={cvv}
-                    onChange={(e) => setCvv(e.target.value)}
-                  />
-                </div>
+          <Tabs defaultValue="card" className="w-full">
+            <TabsList>
+              <TabsTrigger value="card">Card</TabsTrigger>
+              <TabsTrigger value="banking">Net Banking</TabsTrigger>
+            </TabsList>
+            <TabsContent value="card">
+              <div className="flex flex-col items-center space-y-4 ">
+                <img
+                  src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
+                  alt="payment"
+                  className="w-auto h-12"
+                />
+                <section className="flex flex-col w-full gap-4">
+                  <div className="grid w-full items-center gap-1.5">
+                    <Label htmlFor="name">Name on card</Label>
+                    <Input
+                      type="text"
+                      id="name"
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div className="grid w-full items-center gap-1.5">
+                    <Label htmlFor="number">Card number</Label>
+                    <Input
+                      type="text"
+                      id="number"
+                      placeholder="0000 0000 0000 0000"
+                      required
+                      value={number}
+                      onChange={(e) => setNumber(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="grid w-full items-center gap-1.5">
+                      <Label htmlFor="expiry">Expiry date</Label>
+                      <Input
+                        type="text"
+                        id="expiry"
+                        placeholder="MM/YY"
+                        required
+                        value={expiry}
+                        onChange={(e) => setExpiry(e.target.value)}
+                      />
+                    </div>
+                    <div className="grid w-full items-center gap-1.5">
+                      <Label htmlFor="cvv">CVV</Label>
+
+                      <Input
+                        type="text"
+                        id="cvv"
+                        placeholder="000"
+                        required
+                        value={cvv}
+                        onChange={(e) => setCvv(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </section>
               </div>
-            </section>
-          </div>
+            </TabsContent>
+            <TabsContent value="banking">
+              <NetBankingUI upiId={upiId} setUpiId={setUpiId} />
+            </TabsContent>
+          </Tabs>
+
           <DialogFooter>
             <Button onClick={onBooking}>
               {isLoading ? (
@@ -550,3 +600,33 @@ function CardBookingDetails({
     </>
   );
 }
+
+const NetBankingUI = ({
+  upiId,
+  setUpiId,
+}: {
+  upiId: string;
+  setUpiId: any;
+}) => {
+  const handleUpiIdChange = (e: any) => {
+    setUpiId(e.target.value);
+  };
+
+  return (
+    <div className="mx-auto p-4 w-full">
+      <div className="bg-white p-6">
+        <h2 className="text-lg font-bold mb-4">Using UPI</h2>
+        <div className="grid w-full items-center gap-1.5">
+          <Label htmlFor="upiId">Your UPI ID</Label>
+          <Input
+            type="text"
+            id="upiId"
+            value={upiId}
+            onChange={handleUpiIdChange}
+            placeholder="Enter UPI ID"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
